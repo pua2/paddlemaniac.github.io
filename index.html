@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paddle Maniac — Hex Brick Breaker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a12;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Hero */
+    .hero {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, #1a0a3a 0%, #0a0a12 70%);
+    }
+
+    .icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 40px rgba(100, 60, 200, 0.4);
+    }
+
+    /* SVG hex + paddles logo */
+    .icon svg { width: 72px; height: 72px; }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    h1 span { color: #ff4d6d; }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      height: 54px;
+    }
+
+    .badge img { height: 54px; }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      width: 100%;
+      padding: 60px 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .card-icon { font-size: 2rem; margin-bottom: 12px; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: rgba(255,255,255,0.7); }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="icon">
+      <!-- Flat-top hexagon + two orbiting paddle arcs -->
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="36,8 62,22 62,50 36,64 10,50 10,22"
+                 fill="#1e1040" stroke="#a855f7" stroke-width="2.5"/>
+        <circle cx="36" cy="36" r="8" fill="#ff4d6d"/>
+        <!-- Left paddle arc -->
+        <path d="M14,24 A26,26 0 0,0 14,48" stroke="#38bdf8" stroke-width="4"
+              stroke-linecap="round"/>
+        <!-- Right paddle arc -->
+        <path d="M58,24 A26,26 0 0,1 58,48" stroke="#38bdf8" stroke-width="4"
+              stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h1>PADDLE<br><span>MANIAC</span></h1>
+    <p class="tagline">The brick breaker that thinks in circles. Two paddles. One arena. Infinite angles.</p>
+
+    <a class="badge" href="https://apps.apple.com/app/paddle-maniac/id0000000000" target="_blank" rel="noopener">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+           alt="Download on the App Store" />
+    </a>
+  </section>
+
+  <section class="features">
+    <div class="card">
+      <div class="card-icon">⬡</div>
+      <h3>Hex Bricks</h3>
+      <p>Destroy hexagonal brick formations across hand-crafted levels with multiple durability tiers.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Multiple Worlds</h3>
+      <p>From Classic Arcade to Space Station — each world brings a new visual theme and 15 new levels.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Power-Ups</h3>
+      <p>Multi-ball, slow motion, the gun mount, and more. Chain them together for massive score runs.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>Game Center</h3>
+      <p>Compete on global leaderboards and unlock achievements as you master each world.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚫</div>
+      <h3>No Ads. Ever.</h3>
+      <p>World 1 is free forever. Unlock more when you're ready. No subscriptions, no interruptions.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>iOS 17+</h3>
+      <p>Built for iPhone. Landscape only — made for the way you naturally hold your phone sideways.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Gigglebytelabs</p>
+    <p style="margin-top:12px;">
+      <a href="support.html">Support</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </p>
+  </footer>
+
+</body>
+</html>
